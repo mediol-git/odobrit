@@ -536,9 +536,11 @@ footer {
     padding: 15px;
     background-color: $darkBg;
     color: #909090;
-    @media (min-width: 768px) {
-        display: flex;
-        flex-wrap: wrap;
+    .row {
+        @media (min-width: 768px) {
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
     .widget {
         margin-bottom: 30px;

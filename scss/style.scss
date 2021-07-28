@@ -41,6 +41,9 @@ $animTime: .3s;
     display: block;
     height: 25px;
     width: 25px;
+    @media (min-width: 768px) {
+        display: none;
+    }
     span {
         top: calc(50% - 1px);
     }
@@ -99,9 +102,6 @@ h2 {
 h3 {
     font-size: 18px;
 }
-p {
-    margin-bottom: 8px;
-}
 a {
     text-decoration: none;
     color: inherit;
@@ -122,6 +122,13 @@ input[type=checkbox] {
 .btn {
     @include btn();
 }
+.container {
+    @media (min-width: 768px) {
+        width: 1200px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
 
 /* header */
 header {
@@ -130,16 +137,20 @@ header {
     justify-content: space-between;
     box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
     background-color: $greenStyle;
-    .row {
-        align-items: center;
-        justify-content: space-between;
+    @media (min-width: 768px) {
+        display: block;
     }
     .site_header {
-        // padding: 10px 0;
-        // .row {
-        //     display: flex;
-        //     flex-direction: column;
-        // }
+        @media (min-width: 768px) {
+            background-color: $cardBg;
+            padding: 15px 0;
+            .row {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
         .mobile_logo {
             width: 120px;
             margin-bottom: 10px;
@@ -147,12 +158,21 @@ header {
         .header_btn {
             font-size: 12px;
             text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .7);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .4);
             padding: 6px 10px;
+            @media (min-width: 768px) {
+                box-shadow: none;
+                &:hover {
+                    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+                }
+            }
         }
     }
     .logo {
         display: none;
+        @media (min-width: 768px) {
+            display: block;
+        }
         img {
             width: 235px;
         }
@@ -161,6 +181,9 @@ header {
 .top_navigation {
     background-color: $darkBg;
     padding: 15px;
+    @media (min-width: 768px) {
+        padding: 0;
+    }
     input[type=checkbox]:checked ~ .top_menu {
         left: 0;
     }
@@ -178,48 +201,63 @@ header {
         background-color: $darkBg;
         transition: left $animTime;
         box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
+        @media (min-width: 768px) {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0;
+        }
         li {
             padding: 10px 0;
+            position: relative;
+            @media (min-width: 768px) {
+                padding: 6px 15px;
+            }
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%);
+                height: 2px;
+                width: 0;
+                background-color: $greenStyle;
+                transition: $animTime;
+            }
+            &:hover {
+                background-color: #fff;
+            }
+            &:hover a {
+                color: $darkBg;
+            }
+            &:hover::after {
+                width: 100%;
+            }
             a {
                 color: $whiteText;
             }
-        //     position: relative;
-        //     padding: 6px 10px;
-        //     transition: .5s;
-        //     &::after {
-        //         content: '';
-        //         display: block;
-        //         position: absolute;
-        //         bottom: 0;
-        //         left: 50%;
-        //         transform: translate(-50%);
-        //         height: 2px;
-        //         width: 0;
-        //         background-color: $greenStyle;
-        //         transition: $animTime;
-        //     }
-        //     &:hover {
-        //         background-color: #fff;
-        //     }
-        //     &:hover a {
-        //         color: $darkBg;
-        //     }
-        //     &:hover::after {
-        //         width: 100%;
-        //     }
-        //     a {
-        //         color: $whiteText;
-        //     }
+            a {
+                font-size: 13px;
+                color: $whiteText;
+                text-transform: uppercase;
+            }
         }
     }
 }
 .main_navigation {
-    // box-shadow: 0 10px 20px -12px rgba(0, 0, 0, .42),
-    //             0 3px 20px 0 rgba(0, 0, 0, .12),
-    //             0 8px 10px -5px rgba(0, 0, 0, .2);
     background-color: $greenStyle;
     border-left: 1px solid #1a7a41;
     padding: 15px;
+    @media (min-width: 768px) {
+        box-shadow: 0 10px 20px -12px rgba(0, 0, 0, .42),
+                    0 3px 20px 0 rgba(0, 0, 0, .12),
+                    0 8px 10px -5px rgba(0, 0, 0, .2);
+        background-color: $cardBg;
+        padding: 0;
+    }
     input[type=checkbox]:checked ~ .main_menu {
         right: 0;
     }
@@ -233,15 +271,38 @@ header {
     position: absolute;
     top: 55px;
     right: -105%;
-    z-index: 1;
     padding: 15px;
     text-align: center;
     background-color: $cardBg;
     box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
     transition: right $animTime;
+    @media (min-width: 768px) {
+        box-shadow: none;
+        position: relative;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+    }
     li {
         padding: 10px 0;
         position: relative;
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%);
+            height: 2px;
+            width: 0;
+            background-color: $greenStyle;
+            transition: $animTime;
+        }
+        &:hover::after {
+            width: 100%;
+        }
         input[type=checkbox] {
             &:checked ~ .search_field{
                 top: 110%;
@@ -260,12 +321,21 @@ header {
         &:last-child {
             label {
                 display: none;
+                @media (min-width: 768px) {
+                    display: block;
+                }
             }
         }
     }
     .search_field {
         transition: top $animTime ease-in, z-index $animTime ease-in;
         display: flex;
+        @media (min-width: 768px) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+        }
         input {
             border: none;
             border: 1px solid #cecece;
@@ -286,13 +356,98 @@ header {
 
 /* main */
 main {
+    .slogan {
+        text-align: center;
+        background: #525252;
+        border: 3px solid #fff;
+        border-radius: 8px;
+        color: $whiteText;
+        padding: 10px;
+        margin: 15px 5px;
+        @media (min-width: 768px) {
+            margin: 15px;
+        }
+    }
+    .row {
+        display: flex;
+        flex-direction: column;
+        @media (min-width: 1024px) {
+            flex-direction: row;
+        }
+    }
+}
+aside {
+    order: 1;
+    @media (min-width: 1024px) {
+        width: 30%;
+        padding: 20px;
+    }
+    .widget {
+        margin-bottom: 30px;
+        img {
+            width: 100%;
+        }
+        .widget_title {
+            &::after {
+                background-color: #ddd;
+            }
+        }
+    }
+}
+.rating_widget {
+    background-color: $cardBg;
+    border: 7px solid #e6e6e6;
+    padding: 20px 35px;
+    color: $greenStyle;
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -18px;
+        right: 5%;
+        width: 100%;
+        height: 78px;
+        background: url(../img/rating-flag.png) right / contain no-repeat;
+    }
+    h2 {
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+    ol {
+        padding-left: 15px;
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .12);
+        }
+    }
+    a {
+        color: $greenStyle;
+    }
+    .full_list {
+        color: $darkBg;
+        margin: 10px 0;
+    }
+}
+.content {
+    @media (min-width: 1024px) {
+        width: 70%;
+    }
     .card_list {
         list-style: none;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         .ref_link {
             width: 50%;
             padding: 5px;
+            @media (min-width: 768px) {
+                padding: 10px;
+            }
+            @media (min-width: 1024px) {
+                width: 33.33%;
+                padding: 20px;
+            }
         }
     }
     .more_btn {
@@ -319,12 +474,25 @@ main {
         font-size: 16px;
         border-top: 2px solid #DFDFDF;
         border-bottom: 2px solid #DFDFDF;
+        @media (min-width: 768px) {
+            font-size: 19px;
+        }
     }
     .card_body {
         font-size: 13px;
+        line-height: 24px;
+        @media (min-width: 768px) {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            line-height: 28px;
+        }
     }
     .body_left {
         display: none;
+        @media (min-width: 768px) {
+            display: block;
+        }
     }
     .body_right {
         text-align: center;
@@ -339,6 +507,7 @@ main {
             display: block;
             padding: 10px;
             font-size: 14px;
+            font-weight: 700;
             text-align: center;
             border-radius: 5px;
             transition: opacity $animTime;
@@ -353,6 +522,9 @@ main {
 /* page_content */
 .page_content {
     padding: 20px 15px;
+    p {
+        margin-bottom: 8px;
+    }
     ul {
         margin: 20px;
         margin-right: 0;
@@ -364,8 +536,23 @@ footer {
     padding: 15px;
     background-color: $darkBg;
     color: #909090;
+    @media (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+    }
     .widget {
         margin-bottom: 30px;
+        @media (min-width: 768px) {
+            width: 50%;
+            padding: 0 20px;
+        }
+        @media (min-width: 1024px) {
+            width: 33.33%;
+            padding: 0 20px;
+        }
+    }
+    p {
+        margin-bottom: 8px;
     }
     ul {
         list-style: none;

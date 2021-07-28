@@ -49,6 +49,12 @@ img {
   display: block;
 }
 
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 input[type=checkbox] {
   display: none;
 }
@@ -91,6 +97,11 @@ header .row {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+header .site_header .mobile_logo {
+  width: 120px;
+  margin-bottom: 10px;
 }
 
 header .site_header .header_btn {

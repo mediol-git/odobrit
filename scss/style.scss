@@ -4,7 +4,6 @@ $greenStyle: #24a558;
 $darkBg: #1e1e1e;
 $whiteText: #fff;
 $mainMenuText: #777;
-$toggleColor: #fff;
 $cardBg: #fff;
 
 $animTime: .3s;
@@ -52,7 +51,7 @@ $animTime: .3s;
         display: block;
         height: 2px;
         width: 25px;
-        background-color: $toggleColor;
+        background-color: $greenStyle;
         border: none;
         &::before {
             content: '';
@@ -60,7 +59,7 @@ $animTime: .3s;
             display: block;
             height: 2px;
             width: 25px;
-            background-color: $toggleColor;
+            background-color: $greenStyle;
             border: none;
             top: -8px;
         }
@@ -70,7 +69,7 @@ $animTime: .3s;
             display: block;
             height: 2px;
             width: 25px;
-            background-color: $toggleColor;
+            background-color: $greenStyle;
             border: none;
             top: 8px;
         }
@@ -135,25 +134,21 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: $cardBg;
     box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
-    background-color: $greenStyle;
     @media (min-width: 768px) {
         display: block;
     }
     .site_header {
+        padding: 15px;
         @media (min-width: 768px) {
             background-color: $cardBg;
-            padding: 15px 0;
             .row {
                 width: 100%;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
             }
-        }
-        .mobile_logo {
-            width: 120px;
-            margin-bottom: 10px;
         }
         .header_btn {
             font-size: 12px;
@@ -169,87 +164,84 @@ header {
         }
     }
     .logo {
-        display: none;
-        @media (min-width: 768px) {
-            display: block;
-        }
         img {
-            width: 235px;
-        }
-    }
-}
-.top_navigation {
-    background-color: $darkBg;
-    padding: 15px;
-    @media (min-width: 768px) {
-        padding: 0;
-    }
-    input[type=checkbox]:checked ~ .top_menu {
-        left: 0;
-    }
-    label {
-        @include toggleBtn();
-    }
-    .top_menu {
-        position: absolute;
-        top: 55px;
-        left: -100%;
-        z-index: 1;
-        width: 100%;
-        list-style: none;
-        padding: 15px;
-        background-color: $darkBg;
-        transition: left $animTime;
-        box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
-        @media (min-width: 768px) {
-            position: relative;
-            top: 0;
-            left: 0;
-            display: flex;
-            justify-content: flex-end;
-            padding: 0;
-        }
-        li {
-            padding: 10px 0;
-            position: relative;
+            width: 135px;
             @media (min-width: 768px) {
-                padding: 6px 15px;
-            }
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translate(-50%);
-                height: 2px;
-                width: 0;
-                background-color: $greenStyle;
-                transition: $animTime;
-            }
-            &:hover {
-                background-color: #fff;
-            }
-            &:hover a {
-                color: $darkBg;
-            }
-            &:hover::after {
-                width: 100%;
-            }
-            a {
-                color: $whiteText;
-            }
-            a {
-                font-size: 13px;
-                color: $whiteText;
-                text-transform: uppercase;
+                width: 235px;
             }
         }
     }
 }
+// .top_navigation {
+//     background-color: $darkBg;
+//     padding: 15px;
+//     @media (min-width: 768px) {
+//         padding: 0;
+//     }
+//     input[type=checkbox]:checked ~ .top_menu {
+//         left: 0;
+//     }
+//     label {
+//         @include toggleBtn();
+//     }
+//     .top_menu {
+//         position: absolute;
+//         top: 55px;
+//         left: -100%;
+//         z-index: 1;
+//         width: 100%;
+//         list-style: none;
+//         padding: 15px;
+//         background-color: $darkBg;
+//         transition: left $animTime;
+//         box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
+//         @media (min-width: 768px) {
+//             position: relative;
+//             top: 0;
+//             left: 0;
+//             display: flex;
+//             justify-content: flex-end;
+//             padding: 0;
+//         }
+//         li {
+//             padding: 10px 0;
+//             position: relative;
+//             @media (min-width: 768px) {
+//                 padding: 6px 15px;
+//             }
+//             &::after {
+//                 content: '';
+//                 display: block;
+//                 position: absolute;
+//                 bottom: 0;
+//                 left: 50%;
+//                 transform: translate(-50%);
+//                 height: 2px;
+//                 width: 0;
+//                 background-color: $greenStyle;
+//                 transition: $animTime;
+//             }
+//             &:hover {
+//                 background-color: #fff;
+//             }
+//             &:hover a {
+//                 color: $darkBg;
+//             }
+//             &:hover::after {
+//                 width: 100%;
+//             }
+//             a {
+//                 color: $whiteText;
+//             }
+//             a {
+//                 font-size: 13px;
+//                 color: $whiteText;
+//                 text-transform: uppercase;
+//             }
+//         }
+//     }
+// }
 .main_navigation {
-    background-color: $greenStyle;
-    border-left: 1px solid #1a7a41;
     padding: 15px;
     @media (min-width: 768px) {
         box-shadow: 0 10px 20px -12px rgba(0, 0, 0, .42),
@@ -266,26 +258,28 @@ header {
     }
 }
 .main_menu {
-    width: 100%;
+    display: inline-block;
+    height: 100vh;
     list-style: none;
     position: absolute;
     top: 55px;
     right: -105%;
     padding: 15px;
-    text-align: center;
     background-color: $cardBg;
     box-shadow: 0 7px 7px rgba(0, 0, 0, .12);
     transition: right $animTime;
     @media (min-width: 768px) {
+        text-align: center;
         box-shadow: none;
         position: relative;
         top: 0;
         right: 0;
+        height: auto;
         display: flex;
         justify-content: space-between;
-        padding: 0;
+        padding: 0 15px;
     }
-    li {
+    > li {
         padding: 10px 0;
         position: relative;
         &::after {
@@ -303,6 +297,10 @@ header {
         &:hover::after {
             width: 100%;
         }
+        &:hover > .submenu {
+            top: 65px;
+            z-index: 0;
+        }
         input[type=checkbox] {
             &:checked ~ .search_field{
                 top: 110%;
@@ -317,6 +315,10 @@ header {
         }
         img {
             margin: 0 auto;
+        }
+        a {
+            color: $mainMenuText;
+            text-transform: uppercase;
         }
         &:last-child {
             label {
@@ -353,9 +355,34 @@ header {
         }
     }
 }
+.submenu {
+    list-style: none;
+    background-color: $cardBg;
+    padding: 5px 0;
+    position: absolute;
+    z-index: -1;
+    top: -150px;
+    left: 0;
+    transition: top $animTime, z-index $animTime;
+    li {
+        padding: 0 20px;
+        &:hover {
+            background-color: #ececec;
+        }
+        a {
+            padding: 5px 0;
+            font-size: 14px;
+            text-transform: none;
+            white-space: pre;
+        }
+    }
+}
 
 /* main */
 main {
+    @media (min-width: 768px) {
+        padding: 15px 0;
+    }
     .slogan {
         text-align: center;
         background: #525252;
@@ -364,9 +391,6 @@ main {
         color: $whiteText;
         padding: 10px;
         margin: 15px 5px;
-        @media (min-width: 768px) {
-            margin: 15px;
-        }
     }
     .row {
         display: flex;
@@ -377,8 +401,10 @@ main {
     }
 }
 aside {
+    display: none;
     order: 1;
     @media (min-width: 1024px) {
+        display: block;
         width: 30%;
         padding: 20px;
     }
@@ -570,7 +596,7 @@ footer {
     &::after {
         content: '';
         display: block;
-        background-color: $toggleColor;
+        background-color: $cardBg;
         position: absolute;
         z-index: 1;
         bottom: 0;
